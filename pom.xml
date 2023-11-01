@@ -33,9 +33,16 @@
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 
+		<!-- SPRING BOOT ACTUATOR -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<!-- SPRING BOOT SECURITY -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
 
