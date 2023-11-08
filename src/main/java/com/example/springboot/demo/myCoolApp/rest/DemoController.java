@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
     // define a private field for dependency
     private ICoach coach;
+//    private ICoach coach2;
 
     //define a constructor for dependency injection
     // Autowired annotation tells Spring to inject the dependency
@@ -17,9 +18,18 @@ public class DemoController {
 
     // @Qualifier("baseballCoach")  is helping to tell to spring which coach class should be selected...
     @Autowired
-    public DemoController(@Qualifier("baseballCoach") ICoach coach) {
+    public DemoController(@Qualifier("aquatic") ICoach coach) {
+        System.out.println("From Constructor: " + getClass().getSimpleName());
         this.coach = coach;
     }
+
+//    @Autowired
+//    public DemoController(@Qualifier("tennisCoach") ICoach coach, @Qualifier("tennisCoach") ICoach coach2) {
+//        System.out.println("From Constructor: " + getClass().getSimpleName());
+//        this.coach = coach;
+//        this.coach2 = coach2;
+//        System.out.printf("comparing beans: " + (coach==coach2));
+//    }
 
     // example of setter injection
 //    @Autowired
