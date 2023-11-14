@@ -22,7 +22,7 @@ public class  MyCoolAppApplication {
 	public CommandLineRunner commandLineRunner(StudentDAO studentDao){
 		// lambda expression
 		return runner ->{
-			createStudent(studentDao);
+			// createStudent(studentDao);
 			// readStudent(studentDao);
 			// queryForStudents(studentDao);
 			// queryForStudentsByLastName(studentDao);
