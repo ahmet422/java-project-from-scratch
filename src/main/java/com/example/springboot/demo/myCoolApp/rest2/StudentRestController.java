@@ -48,17 +48,25 @@ public class StudentRestController {
         return null;
     }
 
+    @PostMapping("addStudent")
+    public ResponseEntity addStudent(@RequestBody Student student){
+        students.add(student);
+
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
     // @ExceptionHandler is used in Spring Boot to handle specific exceptions and send custom responses to the client.
     // The annotated method is invoked when the specified exceptions are thrown from a @Controller
-    @ExceptionHandler(StudentNotFoundException.class)
-    public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException exc){
-        StudentErrorResponse studentErrorResponse = new StudentErrorResponse();
-        studentErrorResponse.setStatus(HttpStatus.NOT_FOUND.value());
-        studentErrorResponse.setMessage(exc.getMessage());
-        studentErrorResponse.setTimeStamp(System.currentTimeMillis());
-                                    //  body             , status code
-        return new ResponseEntity<>(studentErrorResponse,HttpStatus.NOT_FOUND);
-    }
+    // comment it out since this is moved to the StudentRestExceptionHandler class as aop practice
+//    @ExceptionHandler(StudentNotFoundException.class)
+//    public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException exc){
+//        StudentErrorResponse studentErrorResponse = new StudentErrorResponse();
+//        studentErrorResponse.setStatus(HttpStatus.NOT_FOUND.value());
+//        studentErrorResponse.setMessage(exc.getMessage());
+//        studentErrorResponse.setTimeStamp(System.currentTimeMillis());
+//                                    //  body             , status code
+//        return new ResponseEntity<>(studentErrorResponse,HttpStatus.NOT_FOUND);
+//    }
 
 
     // ResponseEntity in Spring Boot
@@ -67,14 +75,14 @@ public class StudentRestController {
     // sends to the client. For example, you can set the HTTP status code, set custom headers, and include a response body.
 
     // catch any exception
-    @ExceptionHandler
-    public ResponseEntity<StudentErrorResponse> handleException(Exception e){
-        StudentErrorResponse studentErrorResponse = new StudentErrorResponse();
-        studentErrorResponse.setStatus(HttpStatus.BAD_REQUEST.value());
-        studentErrorResponse.setMessage(e.getMessage());
-        studentErrorResponse.setTimeStamp(System.currentTimeMillis());
-        //                                   body             , status code
-        return new ResponseEntity<>(studentErrorResponse,HttpStatus.BAD_REQUEST);
-    }
+//    @ExceptionHandler
+//    public ResponseEntity<StudentErrorResponse> handleException(Exception e){
+//        StudentErrorResponse studentErrorResponse = new StudentErrorResponse();
+//        studentErrorResponse.setStatus(HttpStatus.BAD_REQUEST.value());
+//        studentErrorResponse.setMessage(e.getMessage());
+//        studentErrorResponse.setTimeStamp(System.currentTimeMillis());
+//        //                                   body             , status code
+//        return new ResponseEntity<>(studentErrorResponse,HttpStatus.BAD_REQUEST);
+//    }
 
 }
